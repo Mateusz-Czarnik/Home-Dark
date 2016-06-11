@@ -485,6 +485,30 @@ p {
   margin: 0 auto;
 }
 
+a {
+  text-decoration: none;
+}
+
+.menu li {
+  font-size: 1.5rem;
+  padding: 5px 0;
+}
+
+@media screen and (orientation: landscape) {
+  .menu li {
+    display: inline-block;
+    width: 49%;
+  }
+}
+
+.menu li a {
+  color: #fff;
+}
+
+.menu li a:hover {
+  color: #da491c;
+}
+
 .main {
   padding: 5px 15px 40px;
   color: #fff;
@@ -523,17 +547,21 @@ p {
   }
 }
 
-nav div {
+.menu-bar div {
   display: flex;
   justify-content: space-between;
 }
 
-nav div span {
+.menu-bar div span {
   font-weight: bold;
   font-size: 2rem;
 }
 
-nav ul {
+.menu-bar div span a {
+  color: #fff;
+}
+
+.menu-bar ul {
   padding: 0;
   text-transform: uppercase;
   list-style: none;
@@ -571,18 +599,54 @@ nav ul {
 }
 
 .speciality-section .icon-div {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   border: 1px solid #292929;
 }
 
 .speciality-section .icon-div img {
-  padding: 10px 0;
+  padding: 30px 0;
 }
 
-.speciality-section figcaption {
+.speciality-section .icon-div figure {
+  margin: 1em 0;
+}
+
+.speciality-section .icon-div figure figcaption {
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
+}
+
+.hidden-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+}
+
+.hidden-content span {
+  background: #da491c;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden-content span img {
+  padding: 0 !important;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.content-shown {
+  max-height: 300px;
+  transition: max-height 1s;
+}
+
+.content-bg {
+  background: #292929;
+  transition: background 0.2s;
 }
 
 .team-section div {
@@ -592,6 +656,10 @@ nav ul {
   text-align: center;
   background: #999;
   height: 200px;
+}
+
+.team-section div:hover {
+  background: #da491c !important;
 }
 
 .team-section div p {
@@ -838,6 +906,10 @@ nav ul {
   align-items: center;
   justify-content: center;
   margin: 2px 0;
+}
+
+.brand-logo:hover {
+  background: #da491c;
 }
 
 .vertical-slider {
@@ -1142,9 +1214,12 @@ nav ul {
 }
 
 .footer-nav ul {
+  list-style: none;
+  text-transform: uppercase;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  padding: 0;
 }
 
 .footer-nav ul li {
@@ -1200,6 +1275,50 @@ nav ul {
 }
 
 @media only screen and (min-width: 768px) {
+  #hamburger {
+    display: none;
+  }
+  .menu-bar {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding-bottom: 30px;
+    height: 95px;
+  }
+  .menu-bar div {
+    margin: 0 auto;
+    padding-bottom: 5px;
+  }
+  .menu {
+    display: flex !important;
+    margin: 0 auto;
+  }
+  .menu li {
+    font-size: 1rem;
+    padding: 0 5px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  .menu li {
+    display: block;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .sticky {
+    position: fixed;
+    width: 100%;
+    background: #999;
+    z-index: 2;
+    top: 0;
+    left: 50%;
+    padding: 0 15px;
+    transform: translate(-50%, 0);
+    height: 95px;
+    max-width: 1170px;
+  }
   .showcase-btn, .message-btn {
     margin: 10px 0;
   }
@@ -1220,6 +1339,7 @@ nav ul {
   }
   .icon-div img {
     width: 50px;
+    height: 100px;
   }
   .team-section div {
     text-align: left;
@@ -1317,6 +1437,20 @@ nav ul {
 @media only screen and (min-width: 992px) {
   html {
     font-size: 15px;
+  }
+  .menu-bar {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+  .menu-bar div {
+    margin: 0;
+  }
+  .menu {
+    margin: 0;
+  }
+  .menu li {
+    padding: 0 10px;
   }
   .team-section div {
     height: 300px;
