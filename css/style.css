@@ -1274,6 +1274,12 @@ a {
   color: #999;
 }
 
+@media only screen and (min-width: 520px) {
+  .footer-nav ul {
+    justify-content: center;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   #hamburger {
     display: none;
@@ -1332,7 +1338,7 @@ a {
   }
   .icon-div {
     width: 33%;
-    height: 200px;
+    height: 285px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1451,6 +1457,9 @@ a {
   }
   .menu li {
     padding: 0 10px;
+  }
+  .icon-div {
+    height: 275px;
   }
   .team-section div {
     height: 300px;

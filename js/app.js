@@ -41,16 +41,16 @@ iconDivs.on("mouseleave",function(){
     var showcaseSection = $(".showcase-section");
     var stickyMenuTrigger = showcaseSection.offset().top;
 
-    // $(window).scroll(function() {
-    //     if ($(window).scrollTop() > stickyMenuTrigger) {
-    //         stickyMenu.addClass("sticky");
-    //     } else {
-    //         stickyMenu.removeClass("sticky");
-    //     }
-    //
-    //     scroll = $(window).scrollTop();
-    //     position = scroll / htmlHeight;
-    // });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > stickyMenuTrigger) {
+            stickyMenu.addClass("sticky");
+        } else {
+            stickyMenu.removeClass("sticky");
+        }
+
+        scroll = $(window).scrollTop();
+        position = scroll / htmlHeight;
+    });
 
     // Scroll into view
     var menuBtns = $(".menu-bar").find("a");
