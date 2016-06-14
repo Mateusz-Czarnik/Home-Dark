@@ -622,12 +622,12 @@ a {
 .hidden-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s;
+  transition: max-height 0.5s;
 }
 
 .hidden-content span {
   background: #da491c;
-  height: 50px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -789,14 +789,13 @@ a {
   padding: 5px 0;
 }
 
-.video-section p:first-child {
+.description-wrapper p:first-child {
   font-weight: 600;
-  font-weight: normal;
   font-size: 1.17rem;
   color: #fff;
 }
 
-.video-section p span {
+.description-wrapper p span {
   color: #da491c;
 }
 
@@ -835,13 +834,22 @@ a {
 }
 
 .FAQ-question {
+  cursor: pointer;
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.FAQ-question div {
+  display: flex;
   align-items: center;
 }
 
-.FAQ-question img {
+.FAQ-question div img {
   padding-right: 5px;
+}
+
+.FAQ-question div p {
+  color: #fff;
 }
 
 .content-holder {
@@ -873,7 +881,7 @@ a {
   min-width: 60px;
   text-transform: uppercase;
   padding: 5px;
-  margin: 5px 0;
+  margin: 15px 0;
 }
 
 .featured-btns:hover {
@@ -883,7 +891,6 @@ a {
 
 .showcase {
   height: 200px;
-  width: 100%;
   background: #999;
 }
 
@@ -895,21 +902,26 @@ a {
   margin-bottom: 10px;
 }
 
-.showcase:first-of-type {
-  margin-top: 10px;
-}
-
 .brand-logo {
   background: black;
   height: 200px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 2px 0;
 }
 
+.brand-logo p {
+  padding: 0 10px;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
 .brand-logo:hover {
   background: #da491c;
+  transition: all 0.5s;
 }
 
 .vertical-slider {
@@ -968,7 +980,7 @@ a {
 
 .section-header-holder {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .section-header-holder span {
@@ -997,11 +1009,27 @@ a {
   text-align: center;
 }
 
+.btn-holder a {
+  display: inline-block;
+}
+
+.btn-holder p {
+  text-align: left;
+}
+
 .m-d-btn {
   width: 140px;
   margin: 10px 5px;
   background: #393939;
   padding: 10px;
+}
+
+.m-d-btn:hover {
+  background: #da491c;
+}
+
+.m-d-hidden {
+  display: none;
 }
 
 .plan-select, .plan-length {
@@ -1211,15 +1239,18 @@ a {
 
 .footer-nav {
   color: #fff;
+  padding: 5px 0;
 }
 
 .footer-nav ul {
+  max-width: 280px;
   list-style: none;
   text-transform: uppercase;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 0;
+  margin: 0 auto;
 }
 
 .footer-nav ul li {
@@ -1275,7 +1306,11 @@ a {
 }
 
 @media only screen and (min-width: 520px) {
+  .FAQ-question {
+    flex-wrap: wrap;
+  }
   .footer-nav ul {
+    max-width: 475px;
     justify-content: center;
   }
 }
@@ -1283,6 +1318,9 @@ a {
 @media only screen and (min-width: 768px) {
   #hamburger {
     display: none;
+  }
+  .main {
+    height: 370px;
   }
   .menu-bar {
     display: flex;
@@ -1385,6 +1423,15 @@ a {
   .features-desc-div:nth-child(even) {
     padding-left: 10px;
   }
+  .showcase:nth-child(odd) {
+    background: #999;
+  }
+  .showcase:nth-child(3n+5) {
+    background: #737373;
+  }
+  .showcase:nth-child(-3n+4) {
+    background: #737373;
+  }
   .brand-logo {
     border: solid 2px #292929;
     margin: 0;
@@ -1433,6 +1480,7 @@ a {
     margin: 10px auto;
   }
   .footer-nav ul {
+    max-width: 720px;
     justify-content: space-around;
   }
   .footer-mail-content input {
@@ -1484,6 +1532,12 @@ a {
   }
   .footer-mail-content span {
     width: 100%;
+  }
+  .footer-nav ul li {
+    padding: 5px;
+    margin: 0 5px;
+    width: 31%;
+    text-align: center;
   }
   .footer-desc {
     text-align: left;
@@ -1537,8 +1591,10 @@ a {
   }
   .mid-section-bg {
     background: #333;
-    height: 400px;
+    min-height: 400px;
+    max-height: 1000px;
     clear: both;
+    overflow: hidden;
   }
   .description-wrapper,
   .header-wrapper {
@@ -1554,6 +1610,18 @@ a {
   .FAQ {
     padding: 0 15px;
   }
+  .showcase:nth-child(odd) {
+    background: #999;
+  }
+  .showcase:nth-child(even) {
+    background: #999;
+  }
+  .showcase:nth-child(-2n+4) {
+    background: #737373;
+  }
+  .showcase:nth-child(2n+5) {
+    background: #737373;
+  }
   .brand-logo {
     height: 300px;
   }
@@ -1561,10 +1629,12 @@ a {
     position: relative;
     overflow: hidden;
     height: 550px;
+    transition: height 1s ease-out;
   }
   .btn-holder {
     position: absolute;
     top: 250px;
+    width: 420px;
   }
   .m-d-btn {
     margin: 0;
@@ -1574,10 +1644,30 @@ a {
   .m-d-btn:first-child {
     margin-right: 15px;
   }
+  .m-d-hidden {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition: height 1s ease-out;
+  }
+  .m-d-section-animate {
+    height: 920px;
+    transition: height 1s ease-in;
+  }
+  .m-d-content-animate {
+    height: 580px;
+    transition: height 1s ease-in;
+  }
   .article-holder {
     padding: 160px 20px 80px;
     height: 350px;
     align-items: flex-end;
+  }
+  .footer-nav ul {
+    max-width: 1170px;
+  }
+  .footer-nav ul li {
+    width: auto;
   }
 }
 
