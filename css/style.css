@@ -485,10 +485,6 @@ p {
   margin: 0 auto;
 }
 
-a {
-  text-decoration: none;
-}
-
 .menu li {
   font-size: 1.5rem;
   padding: 5px 0;
@@ -502,7 +498,7 @@ a {
 }
 
 .menu li a {
-  color: #fff;
+  display: block;
 }
 
 .menu li a:hover {
@@ -557,14 +553,21 @@ a {
   font-size: 2rem;
 }
 
-.menu-bar div span a {
-  color: #fff;
-}
-
 .menu-bar ul {
   padding: 0;
   text-transform: uppercase;
   list-style: none;
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  background: rgba(153, 153, 153, 0.9);
+  z-index: 2;
+  top: 0;
+  left: 50%;
+  padding: 0 15px;
+  transform: translate(-50%, 0);
 }
 
 .showcase-btn, .message-btn {
@@ -705,13 +708,14 @@ a {
   border-left: 1px dashed #676766;
 }
 
-.how-we-do-section table td p {
-  color: #fff;
-}
-
 .how-we-do-section table td p:first-of-type {
+  color: #fff;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.how-we-do-section .desktop-table {
+  display: none;
 }
 
 .discover-span, .design-span, .develop-span, .deploy-span {
@@ -889,17 +893,36 @@ a {
   border: 1px solid #da491c;
 }
 
-.showcase {
-  height: 200px;
-  background: #999;
+.featured-btns:last-of-type {
+  margin: 0 0 15px;
 }
 
-.showcase:nth-child(odd) {
+.works {
+  height: 200px;
+  background: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.works:hover {
+  background: black !important;
+}
+
+.works:nth-child(odd) {
   background: #737373;
 }
 
-.showcase:last-of-type {
-  margin-bottom: 10px;
+.works figure img {
+  margin: 10px -4px;
+}
+
+.works figure figcaption {
+  color: #fff;
+}
+
+.works-spread {
+  margin: 2px;
 }
 
 .brand-logo {
@@ -928,18 +951,21 @@ a {
   text-align: center;
   height: 250px;
   overflow: hidden;
-  width: 280px;
+  min-width: 280px;
   margin: 0 auto;
 }
 
 .vertical-slider ul {
+  position: relative;
   padding: 0;
   margin: 0;
 }
 
 .vertical-slider ul li {
+  display: flex;
   height: 250px;
-  width: 280px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .slider-content {
@@ -950,7 +976,9 @@ a {
 }
 
 .slider-content p {
+  font-family: 'Merriweather', Arial ,sans-serif;
   color: #fff;
+  margin: 0 0 10px;
 }
 
 .slider-content span {
@@ -966,12 +994,21 @@ a {
 #nextQuote,
 #prevQuote {
   margin: 10px 0;
-  display: inline-block;
-  width: 20px;
+  padding-top: 2px;
+  display: flex;
+  height: 30px;
+  width: 30px;
   background: #ccc;
   color: #fff;
   cursor: pointer;
-  text-align: center;
+  justify-content: center;
+  align-items: baseline;
+  font-size: 1.5rem;
+}
+
+#nextQuote:active,
+#prevQuote:active {
+  background: #da491c;
 }
 
 #prevQuote {
@@ -1056,21 +1093,31 @@ a {
   width: 30%;
   padding: 15px;
   color: #999;
-}
-
-.plan-options span:hover {
-  background: #da491c;
   border-radius: 25px;
-  color: #fff;
 }
 
 .plan-length {
   cursor: pointer;
   display: flex;
-  justify-content: space-around;
-  border: 1px solid #515151;
+  justify-content: space-between;
+  padding: 0;
+  border: 2px solid #515151;
   color: #fff;
-  width: 140px;
+  width: 220px;
+}
+
+.plan-length span {
+  display: flex;
+  border-radius: 25px;
+  width: 100px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  background: #da491c !important;
+  color: #fff !important;
 }
 
 .table-wrapper {
@@ -1079,6 +1126,12 @@ a {
   margin: 10px auto;
   min-width: 280px;
   width: 60%;
+  height: 433px;
+}
+
+.movable {
+  position: relative;
+  width: 100%;
   height: 433px;
 }
 
@@ -1106,6 +1159,14 @@ a {
 
 .price-wrapper span:last-child {
   align-items: flex-end;
+}
+
+.colored {
+  color: #da491c !important;
+}
+
+.bg-colored {
+  background: #da491c !important;
 }
 
 .plan-desc {
@@ -1186,10 +1247,13 @@ a {
 }
 
 .article-fullContent {
+  cursor: pointer;
+}
+
+.article-fullContent p {
   text-align: center;
   text-transform: uppercase;
   color: #fff;
-  cursor: pointer;
 }
 
 .contact-section h3 {
@@ -1258,8 +1322,14 @@ a {
   margin: 0 5px;
 }
 
+.footer-nav ul li a:hover {
+  color: #da491c;
+}
+
 .footer-mail-content {
-  padding-left: 10px;
+  padding: 15px 0 15px 10px;
+  margin: 0 auto;
+  max-width: 280px;
 }
 
 .footer-mail-content input {
@@ -1284,7 +1354,7 @@ a {
 
 .footer-desc {
   text-align: center;
-  padding: 15px 10px;
+  padding: 5px 10px;
 }
 
 .footer-desc span {
@@ -1298,6 +1368,16 @@ a {
   margin: 0 auto;
 }
 
+.social-media {
+  margin: 10px;
+}
+
+.social-media img {
+  margin: 4px;
+  height: 24px;
+  width: 24px;
+}
+
 .footer-copyright {
   display: block;
   text-align: center;
@@ -1308,6 +1388,9 @@ a {
 @media only screen and (min-width: 520px) {
   .FAQ-question {
     flex-wrap: wrap;
+  }
+  .vertical-slider ul li {
+    width: 80%;
   }
   .footer-nav ul {
     max-width: 475px;
@@ -1352,16 +1435,12 @@ a {
 
 @media only screen and (min-width: 768px) {
   .sticky {
-    position: fixed;
-    width: 100%;
-    background: #999;
-    z-index: 2;
-    top: 0;
-    left: 50%;
     padding: 0 15px;
-    transform: translate(-50%, 0);
-    height: 95px;
+    height: 75px;
     max-width: 1170px;
+    -webkit-box-shadow: 0 -500px 0 500px rgba(153, 153, 153, 0.9);
+    -moz-box-shadow: 0 -500px 0 500px rgba(153, 153, 153, 0.9) rgba(153, 153, 153, 0.9);
+    box-shadow: 0 -500px 0 500px rgba(153, 153, 153, 0.9);
   }
   .showcase-btn, .message-btn {
     margin: 10px 0;
@@ -1423,13 +1502,17 @@ a {
   .features-desc-div:nth-child(even) {
     padding-left: 10px;
   }
-  .showcase:nth-child(odd) {
+  .works-center {
+    display: flex;
+    justify-content: center;
+  }
+  .works:nth-child(odd) {
     background: #999;
   }
-  .showcase:nth-child(3n+5) {
+  .works:nth-child(3n+5) {
     background: #737373;
   }
-  .showcase:nth-child(-3n+4) {
+  .works:nth-child(-3n+4) {
     background: #737373;
   }
   .brand-logo {
@@ -1456,6 +1539,13 @@ a {
   .img-wrapper img {
     width: 100%;
   }
+  .plan-mobile-options {
+    display: none;
+  }
+  .plan-length {
+    margin: 40px auto;
+  }
+  .movable,
   .table-wrapper {
     display: flex;
     margin: 10px auto;
@@ -1482,6 +1572,10 @@ a {
   .footer-nav ul {
     max-width: 720px;
     justify-content: space-around;
+  }
+  .footer-mail-content {
+    margin: 0;
+    max-width: 720px;
   }
   .footer-mail-content input {
     font-size: 2.6rem;
@@ -1573,7 +1667,7 @@ a {
     text-align: left;
   }
   .statistics-section .aside-div {
-    height: 440px;
+    height: 450px;
     clear: none;
     position: absolute;
     right: 15px;
@@ -1588,6 +1682,57 @@ a {
   }
   .team-section div {
     height: 400px;
+  }
+  .how-we-do-section {
+    height: 600px;
+  }
+  .how-we-do-section table {
+    display: none;
+  }
+  .how-we-do-section .desktop-table {
+    display: table;
+  }
+  .how-we-do-section .desktop-table tr:first-of-type td {
+    border-bottom: 1px dashed #676766 !important;
+    position: relative;
+  }
+  .how-we-do-section .desktop-table tr:first-of-type td:after {
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    content: " ";
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    display: block;
+  }
+  .how-we-do-section .desktop-table tr td {
+    text-align: left;
+    border-right: 1px solid #676766;
+    border-left: 1px solid #676766;
+  }
+  .how-we-do-section .desktop-table tr td:last-of-type {
+    border-right: none !important;
+  }
+  .discover-span, .design-span, .develop-span, .deploy-span {
+    top: -30px;
+    left: 0;
+    margin-left: -30px;
+  }
+  .design-span {
+    top: auto;
+    bottom: -170px;
+    left: 284px;
+  }
+  .develop-span {
+    left: 570px;
+  }
+  .deploy-span {
+    top: auto;
+    right: 0;
+    bottom: -170px;
+    margin-left: auto;
   }
   .mid-section-bg {
     background: #333;
@@ -1610,20 +1755,23 @@ a {
   .FAQ {
     padding: 0 15px;
   }
-  .showcase:nth-child(odd) {
+  .works:nth-child(odd) {
     background: #999;
   }
-  .showcase:nth-child(even) {
+  .works:nth-child(even) {
     background: #999;
   }
-  .showcase:nth-child(-2n+4) {
+  .works:nth-child(-2n+4) {
     background: #737373;
   }
-  .showcase:nth-child(2n+5) {
+  .works:nth-child(2n+5) {
     background: #737373;
   }
   .brand-logo {
     height: 300px;
+  }
+  .vertical-slider ul li {
+    width: 60%;
   }
   .mobile-design-section {
     position: relative;
