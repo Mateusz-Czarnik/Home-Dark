@@ -3,9 +3,9 @@ $(function() {
     // Maintaining better position on resize
 
     var htmlDocument = $('html');
-    htmlHeight = htmlDocument.outerHeight(true);
-    scroll = $(window).scrollTop();
-    position = scroll / htmlHeight;
+    var htmlHeight = htmlDocument.outerHeight(true);
+    var scroll = $(window).scrollTop();
+    var position = scroll / htmlHeight;
 
     $(window).resize(function() {
         htmlHeight = htmlDocument.outerHeight(true);
@@ -22,7 +22,7 @@ $(function() {
     });
 
     // Hamburger menu
-    var hamburgerIcon = $("#hamburger")
+    var hamburgerIcon = $("#hamburger");
     var hamburgerMenu = $(".menu");
 
     hamburgerIcon.on("click", function() {
@@ -39,13 +39,7 @@ $(function() {
 
     var iconDivs = $(".icon-div");
 
-    iconDivs.on("mouseenter ", function() {
-
-        $(this).find("div").toggleClass("content-shown");
-        $(this).toggleClass("content-bg");
-    });
-
-    iconDivs.on("mouseleave", function() {
+    iconDivs.on("mouseenter mouseleave", function() {
 
         $(this).find("div").toggleClass("content-shown");
         $(this).toggleClass("content-bg");
@@ -55,12 +49,7 @@ $(function() {
 
     var teamDivs = $(".team-div");
 
-    teamDivs.on("mouseenter", function() {
-        $(this).find("p").toggleClass("invisible");
-        $(this).find("figure").toggleClass("invisible");
-    });
-
-    teamDivs.on("mouseleave", function() {
+    teamDivs.on("mouseenter mouseleave", function() {
         $(this).find("p").toggleClass("invisible");
         $(this).find("figure").toggleClass("invisible");
     });
@@ -104,12 +93,7 @@ $(function() {
 
     var worksDivs = $(".works");
 
-    worksDivs.on("mouseenter", function() {
-
-        $(this).find("figure").toggleClass("hidden");
-    });
-
-    worksDivs.on("mouseleave", function() {
+    worksDivs.on("mouseenter mouseleave", function() {
 
         $(this).find("figure").toggleClass("hidden");
     });
@@ -118,12 +102,7 @@ $(function() {
 
     var brandDivs = $(".brand-logo");
 
-    brandDivs.on("mouseenter ", function() {
-
-        $(this).find("p").toggleClass("content-shown");
-    });
-
-    brandDivs.on("mouseleave", function() {
+    brandDivs.on("mouseenter mouseleave", function() {
 
         $(this).find("p").toggleClass("content-shown");
     });
@@ -153,6 +132,7 @@ $(function() {
     });
 
     // -------------------------------------------------------------------------------------------------------------
+
     // Plan desc selection
     var planSelectors = $(".planSelect");
     var planDescTables = $(".plan-desc");
@@ -161,11 +141,13 @@ $(function() {
 
     planSelectors.on("click", function() {
 
+        var currTable = $(this).closest("table");
+
         changeableColorEl.removeClass("colored");
         changeableBgEl.removeClass("bg-colored");
 
-        $(this).closest("table").find(".changeable").addClass("colored");
-        $(this).closest("table").find(".changeable-bg").addClass("bg-colored");
+        currTable.find(".changeable").addClass("colored");
+        currTable.find(".changeable-bg").addClass("bg-colored");
     });
 
     //Plan length
@@ -246,15 +228,15 @@ $(function() {
     var stickyMenuTrigger = showcaseSection.offset().top;
 
     $(window).scroll(function() {
-    if ($(window).scrollTop() > stickyMenuTrigger) {
-        stickyMenu.addClass("sticky");
-    } else {
-        stickyMenu.removeClass("sticky");
-    }
+        if ($(window).scrollTop() > stickyMenuTrigger) {
+            stickyMenu.addClass("sticky");
+        } else {
+            stickyMenu.removeClass("sticky");
+        }
 
-    scroll = $(window).scrollTop();
-    position = scroll / htmlHeight;
-});
+        scroll = $(window).scrollTop();
+        position = scroll / htmlHeight;
+    });
 
     //Email inpunt
 
@@ -263,16 +245,27 @@ $(function() {
 
     emailInput.on("keypress", function(event) {
 
+        var dialogDiv = $("#dialog");
+        var dialogText = $("#dialog-text");
+
         if (event.which == 13) {
             if (emailInput.val().indexOf("@") != -1 && emailInput.val().indexOf(".") != -1 && emailBase.indexOf(emailInput.val()) == -1) {
-                alert("Thank you for subscribing to our newsletter!");
+                dialogText.text("Thank you for subscribing to our newsletter!");
+                $.ui.dialog.prototype._focusTabbable = function() {};
+                dialogDiv.dialog();
                 emailBase.push(emailInput.val());
                 emailInput.val("");
             } else {
                 if (emailBase.indexOf(emailInput.val()) != -1) {
-                    alert("Email already in database.");
+                    dialogText.text("Email already in database.");
+                    $.ui.dialog.prototype._focusTabbable = function() {};
+                    dialogDiv.dialog();
+
                 } else {
-                    alert("Your email form is incorrect. Don't forget about '@' and '.' signs.");
+                    dialogText.text("Your email form is incorrect. Don't forget about '@' and '.' signs.");
+                    $.ui.dialog.prototype._focusTabbable = function() {};
+                    dialogDiv.dialog();
+
                 }
             }
         }
